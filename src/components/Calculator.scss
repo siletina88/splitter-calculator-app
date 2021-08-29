@@ -1,0 +1,300 @@
+@import "../Globals.scss";
+.calculatorContainer {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 55vw;
+  height: 50vh;
+  max-height: 70vh;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  gap: 3rem;
+
+  @include breakpoint(laptop) {
+    width: 75vw;
+    max-height: 60vh;
+    height: 55vh;
+  }
+
+  @include breakpoint(tablet) {
+    width: 100vw;
+    max-height: 65vh;
+    height: 65vh;
+  }
+  @include breakpoint(phablet) {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100vw;
+    height: 70vh;
+    max-height: 80vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  @include breakpoint(mobileonly) {
+    gap: 1rem;
+    width: 100vw;
+    height: 97vh;
+    max-height: 100vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .calculatorLeft {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    p {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-size: calc(10px + 0.3vw);
+      font-weight: bold;
+      padding-bottom: 10px;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        color: red;
+        font-size: calc(8px + 0.2vw);
+        font-weight: bold;
+        width: 50%;
+        text-align: right;
+        display: none;
+        &.active {
+          display: inline-block;
+        }
+      }
+    }
+    .inputContainer {
+      position: relative;
+      width: 100%;
+
+      input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $Light-grayish-cyan2;
+        border: none;
+        width: 100%;
+        height: 45px;
+        border-radius: 3px;
+        padding-right: 20px;
+        text-align: right;
+        font-size: calc(12px + 1vw);
+        cursor: pointer;
+        font-weight: bold;
+
+        color: $Very-dark-cyan;
+        &:focus {
+          outline-color: $strong-cyan;
+        }
+        &::-webkit-input-placeholder {
+          color: $Light-grayish-cyan;
+        }
+        @include breakpoint(tablet) {
+          height: 35px;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        width: 10px;
+        height: 12px;
+        top: 35%;
+        bottom: 0;
+        left: 10px;
+        z-index: 1000;
+        color: $Light-grayish-cyan;
+      }
+    }
+    .tip {
+      @include breakpoint(phablet) {
+        margin: 1rem 0;
+      }
+    }
+    #peopleInput {
+      &.active {
+        border: 2px solid red;
+        position: relative;
+        &:focus {
+          border: none;
+          color: $Very-dark-cyan;
+        }
+      }
+    }
+
+    .buttonContainer > * {
+      flex: 1 1 31%;
+
+      @include breakpoint(mobileonly) {
+        flex: 1 1 45%;
+      }
+    }
+
+    .buttonContainer {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      .btn {
+        color: white;
+
+        height: 45px;
+        background: $Very-dark-cyan;
+        font-size: calc(14px + 0.7vw);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          color: $Very-dark-cyan;
+          background: $strong-cyan;
+        }
+        @include breakpoint(mobileonly) {
+          height: 40px;
+        }
+      }
+      .active {
+        color: $Very-dark-cyan;
+        background: $strong-cyan;
+      }
+      .btnCustom {
+        color: $Very-dark-cyan;
+        width: 10px;
+        height: 50px;
+        text-align: center;
+        background: $Light-grayish-cyan2;
+        font-size: calc(14px + 0.7vw);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:focus {
+          outline-color: $strong-cyan;
+        }
+        @include breakpoint(mobileonly) {
+          height: 40px;
+        }
+      }
+    }
+  }
+  .calculatorRight {
+    flex: 1 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 6;
+    background: $Very-dark-cyan;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 1.5rem;
+
+    .rightWrapper {
+      width: 80%;
+      height: 80%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .totals {
+        height: 100%;
+        width: 100%;
+      }
+
+      .tip {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        justify-content: space-between;
+        .tipAmmount {
+          display: flex;
+          flex-direction: column;
+
+          justify-content: center;
+
+          .header {
+            color: white;
+            font-size: calc(10px + 0.5vw);
+            font-weight: bold;
+          }
+          .footer {
+            color: $Light-grayish-cyan;
+            font-size: calc(8px + 0.5vw);
+          }
+        }
+        .sum {
+          margin: 0;
+          letter-spacing: 0.3;
+          font-weight: bold;
+          text-align: right;
+          font-size: calc(22px + 1vw);
+          color: $strong-cyan;
+          letter-spacing: 1px;
+        }
+      }
+      .total {
+        width: 100%;
+        display: flex;
+
+        justify-content: space-between;
+        .totalAmmount {
+          display: flex;
+          flex-direction: column;
+
+          justify-content: center;
+          .header {
+            color: white;
+            font-size: calc(10px + 0.5vw);
+            font-weight: bold;
+          }
+          .footer {
+            color: $Light-grayish-cyan;
+            font-size: calc(8px + 0.5vw);
+          }
+        }
+        .sum {
+          margin: 0;
+          letter-spacing: 0.3;
+          text-align: right;
+          font-weight: bold;
+          font-size: calc(22px + 1vw);
+          color: $strong-cyan;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    .resetBtn {
+      width: 100%;
+      height: 40px;
+
+      border: none;
+      border-radius: 5px;
+      color: $Very-dark-cyan;
+
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: $strong-cyan;
+      &:hover {
+        background: $Light-grayish-cyan;
+      }
+      @include breakpoint(phablet) {
+        margin-top: 0;
+      }
+    }
+  }
+}

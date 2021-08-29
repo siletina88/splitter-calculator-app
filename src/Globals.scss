@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;700&display=swap");
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (max-width: 70em) {
+      @content;
+    }
+  } @else if $point == laptop {
+    @media (max-width: 64em) {
+      @content;
+    }
+  } @else if $point == tablet {
+    @media (max-width: 50em) {
+      @content;
+    }
+  } @else if $point == phablet {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  } @else if $point == mobileonly {
+    @media (max-width: 450px) {
+      @content;
+    }
+  }
+}
+
+$strong-cyan: hsl(172, 67%, 45%);
+$Very-dark-cyan: hsl(183, 100%, 15%);
+$Dark-grayish-cyan: hsl(186, 14%, 43%);
+$Dark-grayish-cyan2: hsl(184, 14%, 56%);
+$Light-grayish-cyan: hsl(185, 41%, 84%);
+$Light-grayish-cyan2: hsl(189, 41%, 97%);
+$White: hsl(0, 0%, 100%);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Space Mono", monospace;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  margin: 0;
+  font-size: 24px;
+}
+.AppContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: $Light-grayish-cyan;
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6rem;
+    padding-top: 3rem;
+    @include breakpoint(phablet) {
+      margin: 0;
+      padding-top: 1rem;
+    }
+
+    h2 {
+      letter-spacing: 14px;
+      font-size: 30px;
+
+      margin-bottom: 0px;
+      line-height: 1;
+      color: $Dark-grayish-cyan;
+
+      @include breakpoint(mobileonly) {
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+    h2:nth-child(2) {
+      margin-bottom: 3rem;
+      @include breakpoint(phablet) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
